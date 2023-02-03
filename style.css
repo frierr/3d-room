@@ -33,11 +33,12 @@ html, body {
 .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 200px);
-    gap: 10px;
-    transform: rotateX(60deg) rotateZ(45deg) translateX(50%) translateY(50%);
+    gap: 0;
+    transform: rotateX(60deg) rotateZ(45deg) translateX(45%) translateY(45%);
 }
 
 .floor {
+    position: relative;
     height: 200px;
     width: 200px;
     background-color: rgba(220,220,220,1);
@@ -52,40 +53,54 @@ html, body {
     background-color: aliceblue;
 }
 
+.floor-carpet {
+    background: linear-gradient(45deg, transparent 2px, rgba(0,0,0,0.3) 3px, transparent 4px);
+    background-color: rgba(255,127,127,1);
+    background-size: 4px 2px;
+}
+
+.wall-dot {
+    background-color: limegreen;
+    background-image: radial-gradient(circle at 50% 50%, yellow 10px, transparent 11px),
+    radial-gradient(circle at 0% 0%, yellow 10px, transparent 11px),
+    radial-gradient(circle at 0% 100%, yellow 10px, transparent 11px),
+    radial-gradient(circle at 100% 0%, yellow 10px, transparent 11px),
+    radial-gradient(circle at 100% 100%, yellow 10px, transparent 11px);
+    background-size: 50px 50px;
+}
+
 .wall-y {
     height: 50%;
     width: 100%;
     transform: translateY(-100%) translateX(-25%) skewX(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
+    position: absolute;
 }
 
 .wall-y-high {
     height: 250%;
     width: 100%;
     transform: translateY(-100%) translateX(-125%) skewX(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
+    position: absolute;
 }
 
 .wall-y-corner-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(45deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 20px);
+    background: linear-gradient(45deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 20px);
     position: absolute;
 }
 
 .wall-y-bottom-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(0deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 10px);
+    background: linear-gradient(0deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 10px);
     position: absolute;
 }
 
 .wall-y-left-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(90deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 10px);
+    background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 10px);
     position: absolute;
 }
 
@@ -93,53 +108,87 @@ html, body {
     height: 100%;
     width: 50%;
     transform: translateY(-25%) translateX(-100%) skewY(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
+    position: absolute;
 }
 
 .wall-x-high {
     height: 100%;
     width: 250%;
     transform: translateY(-125%) translateX(-100%) skewY(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
-}
-
-.wall-x-y {
-    height: 100%;
-    width: 50%;
-    transform: translateY(-75%) translateX(-100%) skewY(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
+    position: absolute;
 }
 
 .wall-x-y-high {
     height: 100%;
     width: 250%;
     transform: translateY(-375%) translateX(-100%) skewY(45deg);
-    background-color: rgba(220,220,220,1);
-    position: relative;
+    position: absolute;
 }
 
 .wall-x-corner-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(225deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 20px);
+    background: linear-gradient(225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 20px);
     position: absolute;
 }
 
 .wall-x-bottom-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(270deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 10px);
+    background: linear-gradient(270deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 10px);
     position: absolute;
 }
 
 .wall-x-right-shadow {
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, rgba(200,200,200,1) 0%, rgba(220,220,220,0) 10px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 10px);
     position: absolute;
+}
+
+.picture-y-wrap {
+    position: absolute;
+    top: calc(40% - 40px);
+    left: calc(50% - 60px);
+    height: 80px;
+    width: 120px;
+}
+
+.picture-hanger {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 10px);
+}
+
+.picture-y {
+    width: 100%;
+    height: calc(100% - 10px);
+    position: absolute;
+    bottom: 0px;
+    background-image: url("./media/pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 5px solid goldenrod;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+}
+
+.window-x {
+    position: absolute;
+    top: calc(50% - 60px);
+    left: calc(40% - 120px);
+    height: 80px;
+    width: 220px;
+    border: 20px solid gold;
+    box-shadow: 5px -5px 10px rgba(0,0,0,0.2);
+    background-color: rgba(127,200,255,1);
+    background-image: linear-gradient(90deg, transparent 60px, gold 61px, gold 63px, transparent 64px),
+    linear-gradient(0deg, transparent 38px, gold 39px, gold 41px, transparent 42px);
+    background-repeat: no-repeat;
+    background-position: 0px 0px, 60px 0px;
 }
 
 ::-webkit-scrollbar {
