@@ -6,13 +6,15 @@ html, body {
     background: linear-gradient(169deg, rgba(255,255,255,1) 0%, rgba(127,255,255,1) 25%, rgba(127,200,255,1) 50%, rgba(0,127,255,1) 100%);
     height: 100vh;
     width: 100vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Fredoka One', cursive;
     font-weight: 900;
     font-size: 1.5em;
     user-select: none;
-    color: black;
+    color: rgba(0,200,69,1);
+    text-shadow: 2px 2px 4px black;
     display: grid;
     grid-template-rows: 50px auto 50px;
+    overflow: hidden;
 }
 
 .main {
@@ -32,9 +34,46 @@ html, body {
 
 .grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(5, 200px);
     gap: 0;
-    transform: rotateX(60deg) rotateZ(45deg) translateX(45%) translateY(45%);
+    transform: rotateX(60deg) rotateZ(45deg) translateX(10%) translateY(10%);
+    position: relative;
+    z-index: 0;
+}
+
+.grid-wrapper::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(0deg, rgba(0,0,127,0.5) 1px, transparent 2px, transparent 199px, rgba(0,0,127,0.5) 200px),
+    linear-gradient(90deg, rgba(0,0,127,0.5) 1px, transparent 2px, transparent 199px, rgba(0,0,127,0.5) 200px);
+    background-size: 200px 200px, 200px 200px;
+    background-repeat: repeat;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 65%, transparent 70%);
+    mask-image: radial-gradient(circle at 50% 50%, black 65%, transparent 75%);
+    opacity: 0.3;
+}
+
+.grid-wrapper > div {
+    height: 200px;
+    width: 200px;
+}
+
+
+.freecell {
+    background-image: url("data:image/png;base64,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");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.2;
+}
+
+.freecell:hover {
+    opacity: 0.5;
 }
 
 .floor {
@@ -118,13 +157,6 @@ html, body {
     position: absolute;
 }
 
-.wall-x-y-high {
-    height: 100%;
-    width: 250%;
-    transform: translateY(-375%) translateX(-100%) skewY(45deg);
-    position: absolute;
-}
-
 .wall-x-corner-shadow {
     height: 100%;
     width: 100%;
@@ -189,6 +221,41 @@ html, body {
     linear-gradient(0deg, transparent 38px, gold 39px, gold 41px, transparent 42px);
     background-repeat: no-repeat;
     background-position: 0px 0px, 60px 0px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    appearance: none;
+    border-radius: 5px;
+    background: rgba(0,127,127,1);
+    width: 200px;
+    height: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 25px;
+    border-radius: 3px;
+    background: rgba(0,200,127,1);
+    cursor: pointer;
+    box-shadow: 1px 1px 3px black;
+}
+
+.slider-vertical {
+    transform: rotate(270deg);
 }
 
 ::-webkit-scrollbar {
